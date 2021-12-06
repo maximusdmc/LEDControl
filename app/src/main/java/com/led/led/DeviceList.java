@@ -56,7 +56,7 @@ public class DeviceList extends AppCompatActivity {
 
     private void listaDispositivosvinculados() {
         Set<BluetoothDevice> dispVinculados = myBluetooth.getBondedDevices();
-        ArrayList<String> list = new ArrayList<String>();
+        ArrayList<String> list = new ArrayList<>();
 
         if (dispVinculados.size() > 0) {
             for (BluetoothDevice bt : dispVinculados) {
@@ -66,13 +66,13 @@ public class DeviceList extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "No se han encontrado dispositivos vinculados", Toast.LENGTH_LONG).show();
         }
 
-        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, list);
+        final ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, list);
         listaDispositivos.setAdapter(adapter);
         listaDispositivos.setOnItemClickListener(myListClickListener);
 
     }
 
-    private AdapterView.OnItemClickListener myListClickListener = new AdapterView.OnItemClickListener() {
+    private final AdapterView.OnItemClickListener myListClickListener = new AdapterView.OnItemClickListener() {
         public void onItemClick(AdapterView<?> av, View v, int arg2, long arg3) {
             // OBTENEMOS LA MAC Y LA MOSTRAMOS EN LA LISTA
             String info = ((TextView) v).getText().toString();
